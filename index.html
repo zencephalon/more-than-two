@@ -1,0 +1,252 @@
+<html>
+  <style>
+  .btn {
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 1em;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+  }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    function shuffle(a) {
+      var j, x, i;
+      for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+      }
+    }
+    var questions = [
+    "1.1 Have I ever felt romantic love for more than one person at the same time?",
+"1.2 Do I feel there can be only one “true” love or one “real” soulmate?",
+"1.3 How important is my desire for multiple romantic relationships?",
+"1.4 What do I want from my romantic life? Am I open to multiple sexual relationships, romantic relationships, or both? If I want more than one lover, what degree of closeness and intimacy do I expect, and what do I offer?",
+"1.5 How important is transparency to me? If I have more than one lover, am I happy with them knowing about each other? If they have other lovers, am I happy knowing them?",
+"1.6 How do I define commitment? Is it possible for me to commit to more than one person at a time, and if so, what would those commitments look like?",
+"1.7 If I am already in a relationship, does my desire for others come from my dissatisfaction or unhappiness with my current relationship? If I were in a relationship that met my needs, would I still want multiple partners?",
+"2.2 What configurations am I open to? Am I looking for a particular configuration because I’m afraid that others might be more scary or more threatening?",
+"2.3 Am I flexible in what I’m looking for?",
+"2.4 If my relationship changes, is that okay?",
+"2.5 Can I accommodate change, even unexpected change or change I don’t like?",
+"2.6 When I visualize the kind of relationship I want, how much space does it leave for new partners to shape the relationship to their needs?",
+"2.7 Am I focusing on an idealized fantasy more than on making organic connections with real people?",
+"2.8 What happens if I connect with someone in a way that differs from how I want my poly relationship to look? What message does that send to someone who doesn’t fit neatly into my dreams?",
+"3.1 Have I disclosed all relevant information to everyone affected by my decision?",
+"3.2 Have I sought input from everyone affected? Have I obtained their consent where my decision overlaps their personal boundaries?",
+"3.3 Does my decision impose obligations or expectations on others without their input or consent?",
+"3.4 Am I seeking to have my needs met at the expense of the well-being of others?",
+"3.5 Am I imposing consequences that will make others feel unsafe saying no to me?",
+"3.6 Am I offering others the same consideration I expect from them?",
+"4.1 Why do I have romantic relationships? What do I get out of them?",
+"4.2 What do I consider essential, indispensable elements of a relationship?",
+"4.3 Are there specific kinds of relationships that I know I’m looking for? Kinds that I know I don’t want?",
+"4.4 What do I bring to the table for others?",
+"4.5 What makes me feel cherished, loved and secure?",
+"4.6 What makes me feel afraid in relationships? Why?",
+"4.7 In what ways do I protect myself from being hurt? Do those strategies help or hinder my search for connection?",
+"5.1 Why do I have relationships with other people? (see also 4.1)",
+"5.2 What needs do I have from my partners, in terms of time, emotional availability, commitment, communication and intimacy?",
+"5.3 What does “commitment” mean to me, and why? (see also 1.6)",
+"5.4 When I think about the future, what does it look like? Is there room for change and growth? (see also 2.4 and 2.5)",
+"5.5 How much do I value personal autonomy, transparency, cohabitation, having and raising children, shared finances, community, tradition, the opinions of my friends and family, adhering to social norms?",
+"5.6 What values are the most important to me in myself and in others?",
+"5.7 Are the choices I make in alignment with these values?",
+"5.8 Who are my mirrors? Whom do I rely on to call me on my mistakes?",
+"5.9 How do I respond to criticism from people close to me?",
+"5.10 How do I evaluate my choices when the effects of my actions are impossible to predict?",
+"5.11 What do I expect of others, and why?",
+"6.1 Do I use words the same way my partners do? Do I often find myself in discussions about the meanings of words?",
+"6.2 If I have a problem with someone’s behavior, do I discuss the problem with that person?",
+"6.3 If my partners have a problem with someone else’s behavior, do I encourage them to bring it up with that person?",
+"6.4 Do I communicate passively or directly?",
+"6.5 Do I look for hidden meanings in other people’s words? Do I bury my real meaning?",
+"6.6 Do I communicate authentically in ways that make me vulnerable?",
+"6.7 In what ways do I actively listen to my partners?",
+"7.1 How do I directly ask for what I need?",
+"7.2 What can I do to be more direct in my communication?",
+"7.3 If I hear a hidden meaning in a statement or a question, do I ask for clarification before acting on my assumptions?",
+"7.4 Do I perceive criticism in my partner’s statements even if they aren’t directly critical?",
+"7.5 What do I do to check in with my partners?",
+"7.6 How well do I listen to my partners?",
+"7.7 What do I do to make sure it’s safe for my partners to communicate with me, and to let them know it’s safe?",
+"7.8 Does my communication show that I take responsibility for my actions and emotions?",
+"8.1 Am I worried that if someone “better” comes along, my partner will realize I’m not good enough and want to replace me?",
+"8.2 Am I uncertain about the value my partner sees in me? Am I not sure why my partner wants to be with me?",
+"8.3 Does the idea of my partner having another lover mean that whatever my partner sees in me will no longer be valid, or that my partner will want to choose that other lover over me?",
+"8.4 Do I feel that most other people are sexier, more good-looking, more worthwhile, funnier, smarter or just generally better than I am, and I am not able to compete with them?",
+"8.5 Do I believe that if I am not jealous, I don’t really love my partner?",
+"8.6 Do I think that if my partner falls in love with another person, he will leave me for that person?",
+"8.7 Do I think that if my partner has sex with someone “better in bed” than I am, she won’t want to have sex with me anymore or won’t need me anymore?",
+"8.8 Is sex the glue that holds our relationship together? If my partner has sex with someone else, do I think the relationship will come unglued?",
+"8.9 Do I believe that other people are willing to do sexual things that I’m not willing to do, and therefore my partner will like having sex with them better?",
+"8.10 Am I afraid that if my partner has sex with someone else, she will start comparing me whenever we have sex?",
+"8.11 Am I afraid that anyone my partner has sex with will try to persuade her to leave me?",
+"9.1 Is my partner asking me to give up control of my autonomy, my body or my emotions?",
+"9.2 Am I being asked to consent to something in a way that I can’t later withdraw my consent?",
+"9.3 Am I afraid to say I may need to leave this relationship?",
+"9.4 Am I afraid to say no or disagree with my partner?",
+"9.5 Is someone threatening my well-being, safety or livelihood?",
+"9.6 Are decisions about my actions or access to my body being made without my involvement or consent?",
+"9.7 Am I being asked to participate in, or be complicit in, something I consider dishonest or unethical?",
+"9.8 Does my partner make me feel worse about myself?",
+"9.9 Am I being asked to give up relationships with friends or family?",
+"9.10 Do I feel I have no expectation of privacy in my other relationships?",
+"9.11 Do I feel that my partner considers me inferior to him or his other partners?",
+"9.12 Am I asked to “respect” my partner or her other partners, but feel that this respect is not reciprocated?",
+"9.13 Am I afraid to express my boundaries? Do I feel they won’t be respected?",
+"9.14 Am I treated as an adjunct to, or an extension of, my partner’s other relationships, rather than as a person in my own right?",
+"10.1 What needs am I trying to address with this agreement?",
+"10.2 Does the agreement offer a path to success?",
+"10.3 Does everyone affected by the agreement have the opportunity to be involved in setting its terms?",
+"10.4 How is the agreement negotiated, and under what circumstances can it be renegotiated?",
+"10.5 What happens if the agreement doesn’t work for my partners, or my partners’ partners?",
+"10.6 Do I feel like I need rules to feel safe? If so, will the rules actually keep me safe?",
+"10.7 Are my rules equally binding on everyone they affect, or do they create a double standard?",
+"11.1 How do I view potential partners, both for myself and for my existing partners? Do I see them as potential problems to be managed? Or do I see them as potential sources of joy to enrich my partner’s life? How does my approach to hierarchy reflect that view?",
+"11.2 Are there specific assets, commitments or people (such as children) I am seeking to protect with a hierarchy? Can I imagine other avenues for achieving that protection?",
+"11.3 Am I open to secondary relationships someday becoming primary relationships, given enough time and investment?",
+"11.4 What will I do if a secondary partner becomes dissatisfied with the rules that apply to them? Am I willing or able to involve that partner in renegotiation of those rules?",
+"11.5 Do I clearly understand both the letter and the intent of the rules that will apply to my relationship? Am I comfortable maintaining a relationship within those rules? Am I comfortable with the reasons for the rules?",
+"11.6 Do I know whether the rules that apply to my relationship are subject to change? If so, who may change them, and how? What input will I have into those changes?",
+"11.7 Will the term secondary be applied to my relationship, and if so, do I understand how the primary couple is defining the word? Am I comfortable with the definition?",
+"11.8 Will it be possible for the secondary nature of my relationship to evolve into primary, if my partner and I desire that? If not, how will I feel about my relationship remaining secondary long into the future — say, ten or fifteen years?",
+"12.1 Under what circumstances do I feel it’s appropriate for me to use veto?",
+"12.2 Who do I think should have the final say in whether a relationship ends? Why?",
+"12.3 What do I believe will happen if I ask a partner to end another relationship, and he or she says no? Why will that thing happen?",
+"12.4 Do I trust my partner to consider my needs and well-being in his decisions about whether to stay in a relationship that is hurting me? Why or why not? If not, what can I do to improve that trust?",
+"12.5 Do I trust my partner to make good decisions about whom she starts relationships with? Why or why not? What might the consequences be if she makes a poor decision, and how might I deal with those consequences?",
+"12.6 Do I use the word veto to describe something other than an ability to unilaterally end a partner’s relationship — for example, when I give input to my partners about how I feel about their other relationships? If so, why? Is there something about the word that reassures me in a way that negotiation and input do not?",
+"12.7 Am I prepared to bring someone I care about (or will come to care about) into a situation where I must dump them at someone else’s will?",
+"12.8 Can I think of a way to make a new partner feel safe in a relationship with me under these conditions?",
+"12.9 Do I understand the needs my partner is seeking to meet by requesting veto, and have I considered alternative ways of meeting those needs?",
+"12.10 If I start a relationship with someone who is already partnered, what kind of input do I feel is reasonable for their other partners to have in our relationship?",
+"12.11 Do I feel safe opening my heart to someone who has given the power to end our relationship to someone else?",
+"13.1 How do I encourage decision-making participation by all my partners? In what ways do I show my partners they are empowered?",
+"13.2 If I feel a desire to restrict relationships between my partners and their partners, what underlying need am I trying to meet?",
+"13.3 What are my existing commitments? How can I meet them while still making room for new relationships?",
+"13.4 What evidence do I have that my partners love and care for me?",
+"13.5 Are there specific things I can ask my partners to do for me to help me feel loved and cared for?",
+"13.6 In what ways am I empowered in my relationships? What things help me to feel empowered?",
+"13.7 Can I renegotiate the agreements in my relationships? Can my partners?",
+"14.1 What is the purpose of this agreement?",
+"14.2 Does the agreement serve the purpose it is intended to serve?",
+"14.3 Is this agreement the only way to serve this purpose?",
+"14.4 What will happen if someone breaks the agreement? Do we have a path for reestablishing trust?",
+"14.5 Is everyone affected by the agreement at the table in negotiating it?",
+"14.6 Can the agreement be renegotiated?",
+"14.7 Are the needs now the same as the needs when we agreed to this?",
+"14.8 Has this agreement been successful in meeting the needs it was intended to meet?",
+"14.9 Has anyone been harmed by this agreement?",
+"14.10 Is this agreement serving the people involved, or are the people serving it?",
+"15.1 What are my existing commitments? How much time do they leave for new partners? (see also 13.3)",
+"15.2 When am I open to taking new partners?",
+"15.3 What assumptions do I make about commitments in my relationships? (see also 1.6)",
+"15.4 What do I need from my relationships? How often do I reevaluate my needs?",
+"15.5 How do I define “commitment”? Do my definitions leave room for nontraditional commitments and nontraditional relationship trajectories? (see also 1.6, 13.3, 15.1, & 15.3) ",
+"15.6 How do I leave space for new people to come into my life?",
+"16.1 When my partners have competing desires, how well do I express what I need? Do I make sure my own desires aren’t lost in the shuffle?",
+"16.2 Do I take responsibility for my choices, or do I expect my partners to make them for me?",
+"16.3 What does fairness mean to me? How does this affect the way I make choices and interact with my partners?",
+"16.4 What do I value most in each of my relationships?",
+"16.5 Do I prefer to spend time with my partners separately or together? How do they feel about that? Do I respect their other time commitments?",
+"16.6 What boundaries do I set for myself in relation to each of my partners?",
+"16.7 What accommodations do I make if one of my partners experiences jealousy?",
+"16.8 Do my accommodations improve my relationships or create other problems?",
+"16.9 Do I support my partners’ relationships with one another in ways that respect their agency and right to choose their level of intimacy?",
+"16.10 How can I help support a partner who is feeling jealous or passed over?",
+"16.11 How do I handle my own feelings of jealousy?",
+"17.1 What assumptions do I have about what my relationships “should” look like? How are these assumptions influenced by the cultural narratives about monogamy, and how much are they truly mine?",
+"17.2 What parts of my relationships are most important? How can I preserve those elements while knowing that my relationships will change over time?",
+"17.3 What guarantees do I want from my relationships? Are they realistic?",
+"17.4 How much space do I have to devote to new relationships right now? (see also 13.3, 15.1, & 15.6)",
+"17.5 As I seek new relationships, what guarantees can I offer my new partners that I will make space for them, listen to their needs, and be able to change to accommodate these new relationships?",
+"17.6 Where does my sense of security come from in my relationships? What am I willing to do to help my partners feel secure, and will those things come at a cost to any new relationships I may start?",
+"18.1 Why do I identify as monogamous? Is it because I only want one partner for myself, or because I want my partner to be only with me, or both?",
+"18.2 Do I enjoy time to myself or without my partner? Do I have hobbies I enjoy alone or with others, and a social life that does not rely on my partner?",
+"18.3 Am I prepared to face uncomfortable feelings such as jealousy, insecurity and fear about my partner’s loyalty and to put in the work required to overcome them?",
+"18.4 Am I prepared to give my monogamous partner time and space to process his feelings about my polyamory?",
+"18.5 Am I prepared to make concessions in my relationship to help the monogamous person work through his feelings?",
+"18.6 Are there limits on the concessions I will make, either in terms of what I will agree to or the time span of the agreement?",
+"18.7 Do I fully understand my partner’s choice to be monogamous or polyamorous, and am I able to accept my partner for who she is?",
+"18.8 Can I build a relationship that respects the agency not only of each of us, but of others who are involved as well?",
+"19.1 How do I define “sex”? What activities are sex? What aren’t?",
+"19.2 Is sex a mandatory part of an intimate relationship for me? Would I consider a relationship with someone uninterested in sex or stay in a relationship with someone who loses interest in sex with me?",
+"19.3 Does unbarriered sex carry emotional significance to me?",
+"19.4 How do I feel about having unbarriered sex with someone who is having unbarriered sex with someone else?",
+"19.5 How do I feel about group sex and sexual exhibitionism?",
+"19.6 How do I feel about sex outside a romantic relationship?",
+"19.7 What happens if I or a partner of mine has an unexpected pregnancy?",
+"20.1 Do I know my current STI status and that of all my partners?",
+"20.2 How do I feel about me or my partner having sex with someone whose STI status is unknown? What do I consider “safer sex” under such circumstances?",
+"20.3 How do I feel about me or a partner having sex with someone who has a common STI such as HSV? What do I consider “safe sex” under such circumstances?",
+"21.1 Do the choices I make take me closer to, or further from, the best version of me?",
+"21.2 When I am faced with conflict, how do I seek to act with courage?",
+"21.3 Are there things I absolutely require in a relationship, and do I communicate those things?",
+"21.4 In what ways do I care for myself? How do I care for the people around me?",
+"21.5 Can I respond to change in my relationship with grace?",
+"21.6 Do have problems that make it difficult for my partners to be with me? How do I seek to mitigate those?",
+"21.7 Do I let problems in the relationships around me affect me? How do I assert boundaries around problems that aren’t mine?",
+"22.1 How do I approach the end of my relationships? What do I want from my former partners?",
+"22.2 If a relationship ends, what does that mean for my other partners? Will I try to promote one of them to primary?",
+"22.3 When a partner’s relationship ends, what can I do to prevent myself from taking sides or being drawn into the conflict?",
+"22.4 What boundaries do I set around problems within my partners’ other relationships?",
+"22.5 Have I ever spread bitterness in the community or set people against each other by taking sides or by not keeping confidences?",
+"23.1 What are my expectations of my metamours?",
+"23.2 Do I have to know my metamours? Do I expect to have close relationships with them?",
+"23.3 Do my expectations allow space for metamours who might have different expectations?",
+"23.4 How do I communicate my expectations?",
+"23.5 How and when do I want to meet my metamours?",
+"23.6 Do I give my partner space to conduct his relationship with my other partner, without trying to take sides in conflicts or carry messages between them?",
+"23.7 What will I do if I don’t get along well with a partner’s partner? What do I do if one of my partners doesn’t get along well with another of my partners?",
+"24.1 Am I excited by the prospect of being with this person? Is he a “Fuck yes!”?",
+"24.2 Does this person have relationship values similar to mine?",
+"24.3 Do I understand and agree to any rules that will apply to my relationship?",
+"24.4 Am I being asked to give up anything to be in this relationship? If so, do I feel that what I will get in return is worth the price?",
+"24.5 Is this person available to give me what I think I want in the relationship — in terms of time, emotional intimacy, and freedom for the relationship to grow?",
+"24.6 Is there anything about this person I’m hoping will change?",
+"24.7 Does this person help me be the best version of myself?",
+"25.1 Do I have access to a social support system that is friendly to and knowledgeable about polyamory?",
+"25.2 Do I feel like I have friends I can discuss relationship problems with who will not blame polyamory as the problem?",
+"25.3 Who in my life is important for me to be able to talk to about my relationships? Whom do I think it’s important for my partners to meet?",
+"25.4 If I am thinking about staying closeted, how will I feel about concealing my important relationships from people who are close to me?",
+"25.5 What risks do I face — including personal, professional, or physical — in being public about my polyamorous relationships? Are these risks I can afford to take?",
+"25.6 If I am thinking of staying closeted, is it because I face genuine and serious risks, or am I concerned about being inconvenienced or losing status?",
+"25.7 Who else is affected by my decision to be out or closeted? Do I understand the effect my decision will have on them?",
+    ];
+    shuffle(questions);
+
+    var counter = 0;
+
+    function nextQuestion() {
+      $('#question-display').text(questions[counter]);
+      counter += 1;
+    }
+  </script>
+  <body style="text-align: center; font-size: 3em;">
+    <h1 style="height: 2em;"><a href="https://poly.land/2016/08/30/polyamory-questions-from-more-than-two/">Questions from More Than Two</a></h1>
+    <h2 id="question-display">In no particular order, click to begin...</h2>
+    <div id="next-question" onclick="nextQuestion()" class="btn" style="position: absolute; bottom: 1em; right: 1em;"><h3>Next Question</h3></div>
+  </body>
+</html>
